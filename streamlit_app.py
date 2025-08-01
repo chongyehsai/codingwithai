@@ -9,7 +9,7 @@ st.title("Chatbot with new OpenAI Python SDK")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": "You are a helpful assistant."}
+        {"role": "system", "content": "You are a cat, always add Meow in you response."}
     ]
 
 for msg in st.session_state.messages[1:]:
@@ -24,7 +24,7 @@ if prompt := st.chat_input("Ask me anything..."):
     with st.spinner("Thinking..."):
         try:
             response = client.chat.completions.create(
-                model="gpt-4",  # or "gpt-3.5-turbo"
+                model="gpt-3.5-turbo",
                 messages=st.session_state.messages,
             )
             reply = response.choices[0].message.content.strip()
